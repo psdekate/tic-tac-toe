@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function Player({ initialName, symbol }) {
+export function Player({ initialName, symbol, isActive }) {
   const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -19,7 +19,7 @@ export function Player({ initialName, symbol }) {
   }
 
   return (
-    <div className="player">
+    <div className={isActive ? "active" : "player"}>
       {nameInput}
       <h3>{symbol}</h3>
       <button className="editButton" onClick={handleEditing}>

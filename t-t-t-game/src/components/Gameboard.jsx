@@ -1,21 +1,29 @@
-import { useState } from "react";
-
 const initialGameBoard = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
 ];
 
-export function Gameboard() {
-  const [gameBoard, setGameBoard] = useState(initialGameBoard);
+export function Gameboard({ onSelectSquare, turns }) {
+  let gameBoard = initialGameBoard;
 
-  function handleButtonClick(row, col) {
-    setGameBoard((prevGameBoard) => {
-      const updatedBoard = [...prevGameBoard.map((initialArray) => [...initialArray])];
-      updatedBoard[row][col] = "X";
-      return updatedBoard;
-    });
+  for (const turn of turns) {
+    const { square, player } = turn;
+    const { row, col } = square;
+
+    gameBoard[row][col] = player;
   }
+  // const [gameBoard, setGameBoard] = useState(initialGameBoard);
+
+  // function handleButtonClick(row, col) {
+  //   setGameBoard((prevGameBoard) => {
+  //     const updatedBoard = [...prevGameBoard.map((initialArray) => [...initialArray])];
+  //     updatedBoard[row][col] = playerSymbol;
+  //     return updatedBoard;
+  //   });
+
+  //   onSelectSquare();
+  // }
 
   return (
     <>
@@ -24,10 +32,7 @@ export function Gameboard() {
           <div key={rowIndex} className="buttonRow">
             {row.map((playerSymbol, colIndex) => (
               <div key={colIndex}>
-                <button
-                  className="clickButton"
-                  onClick={() => handleButtonClick(rowIndex, colIndex)}
-                >
+                <button className="clickButton" onClick={() => onSelectSquare(rowIndex, colIndex)}>
                   {playerSymbol}
                 </button>
               </div>
