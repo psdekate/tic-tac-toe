@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+.container {
+  width: 95vw;
+  height: 100vh;
+  margin: 0 auto;
+  font-family: "Inter";
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-wrapper {
+  width: 50vw;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+  grid-auto-rows: min-content;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
