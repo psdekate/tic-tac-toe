@@ -1,11 +1,9 @@
-const initialBoard = [null, null, null, null, null, null, null, null, null];
-
-export function Gameboard() {
+export function Gameboard({ gameBoard, onCellClicked }) {
   return (
     <>
       <div className="board">
-        {initialBoard.map((item, itemIndex) => (
-          <button key={itemIndex} className="game-button">
+        {gameBoard.map((item, itemIndex) => (
+          <button key={itemIndex} className="game-button" onClick={() => onCellClicked(itemIndex)}>
             {item}
           </button>
         ))}

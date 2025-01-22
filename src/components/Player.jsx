@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function Players({ symbol, initialName }) {
+export function Players({ symbol, initialName, currentPlayer }) {
   const [isEditing, setIsEditing] = useState(false);
   const [playerName, setPlayerName] = useState(initialName);
 
@@ -14,6 +14,8 @@ export function Players({ symbol, initialName }) {
     />
   );
 
+  const activePlayer = symbol === currentPlayer ? "player active" : "player";
+
   function handleClick() {
     setIsEditing((click) => !click);
   }
@@ -24,13 +26,13 @@ export function Players({ symbol, initialName }) {
 
   return (
     <>
-      <div className="player">
+      <div className={activePlayer}>
         <div className="player-name">
           {isEditing ? editClick : <h2>{playerName}</h2>}
           <h2>{symbol}</h2>
         </div>
         <button onClick={handleClick} className="name-edit">
-          Edit
+          {isEditing ? "Save" : "Edit"}
         </button>
       </div>
     </>
