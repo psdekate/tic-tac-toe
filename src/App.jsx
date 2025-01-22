@@ -10,6 +10,7 @@ function App() {
   const [prevBoard, setPrevBoard] = useState(initialBoard);
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [winner, setWinner] = useState(null);
+  const [playerName, setPlayerName] = useState({ X: "Player", O: "Player" });
 
   function checkWinner(updatedBoard) {
     for (const [a, b, c] of winningCombinations) {
@@ -39,6 +40,10 @@ function App() {
     }
   }
 
+  function updatePlayerName(symbol, name) {
+    setPlayerName((prevName) => ({ ...prevName, [symbol]: name }));
+  }
+
   function handleReset() {
     setPrevBoard(initialBoard);
     setCurrentPlayer("X");
@@ -51,12 +56,22 @@ function App() {
         <div className="game-wrapper">
           <h1>Tic-Tac-Toe</h1>
           <div className="game-header">
-            <Players symbol="X" initialName="Player" currentPlayer={currentPlayer} />
-            <Players symbol="O" initialName="Player" currentPlayer={currentPlayer} />
+            <Players
+              symbol="X"
+              initialName="Player"
+              currentPlayer={currentPlayer}
+              onNameChange={(name) => updatePlayerName("X", name)}
+            />
+            <Players
+              symbol="O"
+              initialName="Player"
+              currentPlayer={currentPlayer}
+              onNameChange={(name) => updatePlayerName("O", name)}
+            />
           </div>
           {winner ? (
             <div className="game-stat">
-              <h3>Winner is {winner}</h3>
+              <h3>Winner is {playerName[winner]}</h3>
               <button onClick={handleReset} className="reset">
                 Restart
               </button>
