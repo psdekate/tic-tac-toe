@@ -1,4 +1,5 @@
 import "./App.css";
+import { Gameboard } from "./components/Gameboard";
 import { Players } from "./components/Player";
 
 function App() {
@@ -8,10 +9,10 @@ function App() {
         <div className="game-wrapper">
           <h1>Tic-Tac-Toe</h1>
           <div className="game-header">
-            <Players name="Player" symbol="X" />
-            <Players name="Player" symbol="O" />
+            <Players symbol="X" initialName="Player" />
+            <Players symbol="O" initialName="Player" />
           </div>
-          <div className="game-body"></div>
+          <Gameboard />
         </div>
       </div>
     </>
