@@ -58,7 +58,7 @@ function App() {
             <div className="game-stat">
               <h3>Winner is {winner}</h3>
               <button onClick={handleReset} className="reset">
-                Reset
+                Restart
               </button>
             </div>
           ) : prevBoard.every((cell) => cell !== null) ? (
